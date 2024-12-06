@@ -20,7 +20,7 @@ class PracticeMapper {
     }
 
     fun toEntity(dto: PracticeDTO): Practice {
-        val practice = Practice()
+        val practice = Practice(dto.practice)
         practice.id = dto.id
         practice.semester = dto.semester
         practice.term = dto.term
