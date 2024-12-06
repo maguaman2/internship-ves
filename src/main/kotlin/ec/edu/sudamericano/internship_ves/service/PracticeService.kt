@@ -4,12 +4,20 @@ import ec.edu.sudamericano.internship_ves.dto.PracticeDTO
 import ec.edu.sudamericano.internship_ves.entity.Practice
 import ec.edu.sudamericano.internship_ves.mapper.PracticeMapper
 import ec.edu.sudamericano.internship_ves.repository.PracticeRepository
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.function.Function
 import java.util.stream.Collectors
 
 @Service
-class PracticeService(private val practiceRepository: PracticeRepository, private val practiceMapper: PracticeMapper) {
+class PracticeService {
+
+    @Autowired
+    lateinit var practiceRepository: PracticeRepository
+
+    @Autowired
+    lateinit var practiceMapper: PracticeMapper
+
     fun findAll(): List<PracticeDTO> {
         return practiceRepository.findAll()
             .stream()
