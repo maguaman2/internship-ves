@@ -1,39 +1,41 @@
-package ec.edu.sudamericano.internship_ves.controller
-
-
 import ec.edu.sudamericano.internship_ves.dto.CompanyDto
+import ec.edu.sudamericano.internship_ves.response.SuccessResponse
 import ec.edu.sudamericano.internship_ves.service.CompanyService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api/company")
-class CompanyController(private val companyService: CompanyService) {
+@RequestMapping("/api/ves")
+
+class CompanyController(private val CompanyService: CompanyService) {
 
     @GetMapping
-    fun getAllCompanies(): ResponseEntity<List<CompanyDto>> {
-        return ResponseEntity.ok(companyService.findAll())
+    fun getAllCompany(): ResponseEntity<Any> {
+        val response = CompanyService.findAll()
+        return ResponseEntity.ok(SuccessResponse(data = response))
     }
 
     @GetMapping("/{id}")
-    fun getCompanyById(@PathVariable id: Long): ResponseEntity<CompanyDto> {
-        val dto = companyService.findById(id)
-        return if (dto != null) ResponseEntity.ok(dto) else ResponseEntity.notFound().build()
+    fun getCompany(@PathVariable id: Long): ResponseEntity<SuccessResponse> {
+        val response = CompanyService.findById(id)
+        return ResponseEntity.ok(SuccessResponse(data = response))
     }
 
     @PostMapping
-    fun createCompany(@RequestBody dto: CompanyDto): ResponseEntity<CompanyDto> {
-        return ResponseEntity.ok(companyService.create(dto))
+    fun createCompany(@RequestBody dto: CompanyDto): ResponseEntity<SuccessResponse> {
+        val response = CompanyService.create(dto)
+        return ResponseEntity.ok(SuccessResponse(data = response))
     }
 
     @PutMapping("/{id}")
-    fun updateCompany(@PathVariable id: Long, @RequestBody dto: CompanyDto): ResponseEntity<CompanyDto> {
-        val updated = companyService.update(id, dto)
-        return if (updated != null) ResponseEntity.ok(updated) else ResponseEntity.notFound().build()
+    fun updateCompany(@PathVariable id: Int, @RequestBody dto: CompanyDto): ResponseEntity<SuccessResponse> {
+        val response = CompanyService.create( dto)
+        return ResponseEntity.ok(SuccessResponse(data = response))
     }
 
     @DeleteMapping("/{id}")
-    fun deleteCompany(@PathVariable id: Long): ResponseEntity<Void> {
-        return if (companyService.delete(id)) ResponseEntity.noContent().build() else ResponseEntity.notFound().build()
+    fun deleteCompany(@PathVariable id: Long): ResponseEntity<SuccessResponse> {
+        val response = CompanyService.delete(id )
+        return ResponseEntity.ok(SuccessResponse(data = response))
     }
 }
