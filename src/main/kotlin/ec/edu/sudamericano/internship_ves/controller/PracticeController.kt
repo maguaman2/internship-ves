@@ -18,45 +18,25 @@ class PracticeController(private val practiceService: PracticeService) {
 
     @GetMapping("/{id}")
     fun getPracticeById(@PathVariable id: Long): ResponseEntity<Any> {
-        val dto = practiceService.findById(id)
-        return ResponseEntity.ok(SuccessResponse())  // Solo devuelve OK, sin necesidad de 'data' o 'null'
+        val response = practiceService.findById(id)
+        return ResponseEntity.ok(SuccessResponse(data = response))
     }
 
     @PostMapping
     fun createPractice(@RequestBody dto: PracticeDTO): ResponseEntity<Any> {
-        return try {
-            practiceService.create(dto)
-            ResponseEntity.ok(SuccessResponse())  // Solo devuelve OK al crear la práctica
-        } catch (ex: Exception) {
-            ResponseEntity.ok(SuccessResponse())  // Si ocurre un error, también solo devuelve OK
-        }
+        val response = practiceService.create(dto)
+        return ResponseEntity.ok(SuccessResponse(data = response))
     }
 
     @PutMapping("/{id}")
     fun updatePractice(@PathVariable id: Long, @RequestBody dto: PracticeDTO): ResponseEntity<Any> {
-        return try {
-            val updatedPractice = practiceService.update(id, dto)
-            if (updatedPractice != null) {
-                ResponseEntity.ok(SuccessResponse())  // Solo devuelve OK si la actualización es exitosa
-            } else {
-                ResponseEntity.ok(SuccessResponse())  // Si no se encuentra la práctica para actualizar, solo OK
-            }
-        } catch (ex: Exception) {
-            ResponseEntity.ok(SuccessResponse())  // En caso de error, responde solo OK
-        }
+        val response = practiceService.create(dto)
+        return ResponseEntity.ok(SuccessResponse(data = response))
     }
 
     @DeleteMapping("/{id}")
     fun deletePractice(@PathVariable id: Long): ResponseEntity<Any> {
-        return try {
-            val deleted = practiceService.delete(id)
-            if (deleted) {
-                ResponseEntity.ok(SuccessResponse())  // Responde OK si la práctica se eliminó exitosamente
-            } else {
-                ResponseEntity.ok(SuccessResponse())  // Si no se encuentra la práctica para eliminar, responde solo OK
-            }
-        } catch (ex: Exception) {
-            ResponseEntity.ok(SuccessResponse())  // En caso de error, responde solo OK
-        }
+        val response = practiceService.delete(id)
+        return ResponseEntity.ok(SuccessResponse(data = response))
     }
-    }
+}
