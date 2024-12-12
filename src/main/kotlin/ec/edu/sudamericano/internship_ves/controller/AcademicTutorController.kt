@@ -2,7 +2,10 @@ package ec.edu.sudamericano.internship_ves.controller
 
 import org.springframework.http.ResponseEntity
 import ec.edu.sudamericano.internship_ves.dto.AcademicTutorDto
+import ec.edu.sudamericano.internship_ves.response.ErrorResponse
+import ec.edu.sudamericano.internship_ves.response.SuccessResponse
 import ec.edu.sudamericano.internship_ves.service.AcademicTutorService
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -14,34 +17,42 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/academic-tutor")
-class AcademicTutorController (private val academicTutorService: AcademicTutorService) {
+class AcademicTutorController {
 
-    @GetMapping
-    fun getAllTutor(): ResponseEntity<List<AcademicTutorDto>> {
-        val tutor = academicTutorService.findAll()
-        return ResponseEntity.ok(tutor)
-    }
+    @RestController
+    @RequestMapping("/api/academic-tutor")
+    class AcademicTutorController(private val academicTutorService: AcademicTutorService) {
 
-    @GetMapping("/{id}")
-    fun getTutorById(@PathVariable id: Long): ResponseEntity<AcademicTutorDto> {
-        val tutor = academicTutorService.findById(id)
-        return if (tutor != null) ResponseEntity.ok(tutor) else ResponseEntity.notFound().build()
-    }
+        @GetMapping
+        fun getAllTutors(): ResponseEntity<*> {
+            val tutors = academicTutorService.findAll()
+            return ResponseEntity.ok(SuccessResponse(data = tutors))
+        }
 
-    @PostMapping
-    fun createTutor(@RequestBody academicTutorDto: AcademicTutorDto): ResponseEntity<AcademicTutorDto> {
-        val createdTutor = academicTutorService.create(academicTutorDto)
-        return ResponseEntity.ok(createdTutor)
-    }
+        @GetMapping("/{id}")
+        fun getTutorById(@PathVariable id: Long): ResponseEntity<*> {
+            val tutor = academicTutorService.findById(id) ?: return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ErrorResponse(message = "Tutor not found"))
+            return ResponseEntity.ok(SuccessResponse(data = tutor))
+        }
 
-    @PutMapping("/{id}")
-    fun updateTutor(@PathVariable id: Long, @RequestBody academicTutorDto: AcademicTutorDto): ResponseEntity<AcademicTutorDto> {
-        val updatedTutor = academicTutorService.update(id, academicTutorDto)
-        return if (updatedTutor != null) ResponseEntity.ok(updatedTutor) else ResponseEntity.notFound().build()
-    }
+        @PostMapping
+        fun createTutor(@RequestBody academicTutorDto: AcademicTutorDto): ResponseEntity<*> {
+            val createdTutor = academicTutorService.create(academicTutorDto)
+            return ResponseEntity.ok(SuccessResponse(data = createdTutor))
+        }
 
-    @DeleteMapping("/{id}")
-    fun deleteTutor(@PathVariable id: Long): ResponseEntity<Void> {
-        return if (academicTutorService.delete(id)) ResponseEntity.noContent().build() else ResponseEntity.notFound().build()
+        @PutMapping("/{id}")
+        fun updateTutor(@PathVariable id: Long, @RequestBody academicTutorDto: AcademicTutorDto): ResponseEntity<*> {
+            val updatedTutor = academicTutorService.update(id, academicTutorDto) ?: return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ErrorResponse(message = "Tutor not found"))
+            return ResponseEntity.ok(SuccessResponse(data = updatedTutor))
+        }
+
+        @DeleteMapping("/{id}")
+        fun deleteTutor(@PathVariable id: Long): ResponseEntity<Any> {
+            if (!academicTutorService.delete(id)) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ErrorResponse(message = "Tutor not found"))
+            }
+            return ResponseEntity.noContent().build()
+        }
     }
 }
