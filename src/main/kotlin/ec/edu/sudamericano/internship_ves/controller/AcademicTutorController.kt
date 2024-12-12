@@ -48,11 +48,9 @@ class AcademicTutorController {
         }
 
         @DeleteMapping("/{id}")
-        fun deleteTutor(@PathVariable id: Long): ResponseEntity<Any> {
-            if (!academicTutorService.delete(id)) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ErrorResponse(message = "Tutor not found"))
-            }
-            return ResponseEntity.noContent().build()
+        fun deleteTutor(@PathVariable id: Long): ResponseEntity<*> {
+           val response = academicTutorService.delete(id)
+                    return ResponseEntity.ok(SuccessResponse(data = response))
         }
     }
 }
