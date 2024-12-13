@@ -36,7 +36,13 @@ class ActivityService(
         val savedActivity = activityRepository.save(activity)
         return activityMapper.toDto(savedActivity)
     }
-
+    /**
+     * Actualizar una actividad por ID
+     */
+    fun updateActivity(id: Int): Optional<ActivityDto> {
+        val activity = activityRepository.findById(id)
+        return activity.map { activityMapper.toDto(it) }
+    }
     /**
      * Eliminar una actividad por ID
      */
@@ -46,5 +52,6 @@ class ActivityService(
         } else {
             throw IllegalArgumentException("Activity with ID $id not found")
         }
+
     }
 }
