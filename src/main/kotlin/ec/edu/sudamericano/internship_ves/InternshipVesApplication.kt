@@ -3,7 +3,7 @@ package ec.edu.sudamericano.internship_ves
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = ["ec.edu.sudamericano.internship_ves"])
 class InternshipVesApplication
 
 fun main(args: Array<String>) {
