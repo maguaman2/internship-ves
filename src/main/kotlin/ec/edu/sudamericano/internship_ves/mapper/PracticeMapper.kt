@@ -20,15 +20,17 @@ class PracticeMapper {
     }
 
     fun toEntity(dto: PracticeDTO): Practice {
-        val practice = Practice(dto.practice)
-        practice.id = dto.id
-        practice.semester = dto.semester
-        practice.term = dto.term
-        practice.startDate = dto.startDate
-        practice.endDate = dto.endDate
-        practice.deliveryDate = dto.deliveryDate
-        practice.studentId = dto.studentId
-        practice.companyTutorId = dto.companyTutorId
+        val practice = Practice().apply {
+            id = dto.id
+            semester = dto.semester
+            term = dto.term
+            startDate = dto.startDate
+            endDate = dto.endDate
+            deliveryDate = dto.deliveryDate
+            studentId = dto.studentId
+            companyTutorId = dto.companyTutorId
+        }
+
         return practice
     }
 }
