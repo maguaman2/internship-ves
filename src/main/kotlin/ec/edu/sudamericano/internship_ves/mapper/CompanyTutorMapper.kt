@@ -2,7 +2,6 @@ package ec.edu.sudamericano.internship_ves.mapper
 
 import TutorDto
 import org.springframework.stereotype.Component
-import ec.edu.sudamericano.internship_ves.dto.TutorDto
 import ec.edu.sudamericano.internship_ves.entity.Tutor
 
 @Component
