@@ -1,5 +1,7 @@
 package ec.edu.sudamericano.internship_ves.dto
 
+
+
 class StudentDto {
     var id: Long? = null
     var firstName: String? = null
