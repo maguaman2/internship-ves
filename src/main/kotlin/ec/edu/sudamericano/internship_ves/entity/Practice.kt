@@ -6,7 +6,7 @@ import java.time.LocalDate
 
 @Entity
 @Table(name = "practice")
-class Practice {
+class Practice(practiceId: Long) {
     // Getters y Setters
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,62 +1,46 @@
 package ec.edu.sudamericano.internship_ves.controller
 
 import ec.edu.sudamericano.internship_ves.dto.EvaluationDto
-import ec.edu.sudamericano.internship_ves.mapper.EvaluationMapper
+import ec.edu.sudamericano.internship_ves.response.SuccessResponse
 import ec.edu.sudamericano.internship_ves.service.EvaluationService
-import org.springframework.http.HttpStatus
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/evaluations")
-class EvaluationController(
-    private val evaluationService: EvaluationService,
-    private val evaluationMapper: EvaluationMapper
-) {
+class EvaluationController {
+
+    @Autowired
+    lateinit var evaluationService: EvaluationService
 
     @GetMapping
-    fun getAllEvaluations(): List<EvaluationDto> {
-        return evaluationService.getAllEvaluations().map { evaluationMapper.toDto(it) }
+    fun getAllEvaluations(): ResponseEntity<*> {
+        val response = evaluationService.getAllEvaluations()
+        return ResponseEntity.ok(SuccessResponse(data = response))
     }
 
     @GetMapping("/{id}")
-    fun getEvaluationById(@PathVariable id: Long): ResponseEntity<EvaluationDto> {
-        val evaluation = evaluationService.getEvaluationById(id)
-        return if (evaluation.isPresent) {
-            ResponseEntity.ok(evaluationMapper.toDto(evaluation.get()))
-        } else {
-            ResponseEntity.notFound().build()
-        }
+    fun getEvaluationById(@PathVariable id: Long): ResponseEntity<*> {
+        val response = evaluationService.getEvaluationById(id)
+        return ResponseEntity.ok(SuccessResponse(data = response))
     }
 
     @PostMapping
-    fun createEvaluation(@Valid @RequestBody evaluationDto: EvaluationDto): ResponseEntity<EvaluationDto> {
-        val evaluation = evaluationMapper.toEntity(evaluationDto)
-        val savedEvaluation = evaluationService.createEvaluation(evaluation)
-        return ResponseEntity.status(HttpStatus.CREATED).body(evaluationMapper.toDto(savedEvaluation))
+    fun createEvaluation(@RequestBody evaluationDto: EvaluationDto): ResponseEntity<*> {
+        val response = evaluationService.createEvaluation(evaluationDto)
+        return ResponseEntity.ok(SuccessResponse(data = response))
     }
 
     @PutMapping("/{id}")
-    fun updateEvaluation(
-        @PathVariable id: Long,
-        @Valid @RequestBody evaluationDto: EvaluationDto
-    ): ResponseEntity<EvaluationDto> {
-        val updatedEvaluation = evaluationService.updateEvaluation(id, evaluationMapper.toEntity(evaluationDto))
-        return if (updatedEvaluation.isPresent) {
-            ResponseEntity.ok(evaluationMapper.toDto(updatedEvaluation.get()))
-        } else {
-            ResponseEntity.notFound().build()
-        }
+    fun updateEvaluation(@PathVariable id: Long, @RequestBody evaluationDto: EvaluationDto): ResponseEntity<*> {
+        val response = evaluationService.updateEvaluation( id, evaluationDto)
+        return ResponseEntity.ok(SuccessResponse(data = response))
     }
 
     @DeleteMapping("/{id}")
-    fun deleteEvaluation(@PathVariable id: Long): ResponseEntity<Void> {
-        return if (evaluationService.deleteEvaluation(id)) {
-            ResponseEntity.noContent().build()
-        } else {
-            ResponseEntity.notFound().build()
-        }
+    fun deleteEvaluation(@PathVariable id: Long): ResponseEntity<*> {
+        val response = evaluationService.deleteEvaluation(id)
+        return ResponseEntity.ok(SuccessResponse(data = response))
     }
 }
-
-annotation class Valid

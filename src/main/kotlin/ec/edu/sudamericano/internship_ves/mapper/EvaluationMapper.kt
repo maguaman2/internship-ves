@@ -5,7 +5,7 @@ import ec.edu.sudamericano.internship_ves.entity.Evaluation
 import org.springframework.stereotype.Component
 
 @Component
-class EvaluationMapper {
+object EvaluationMapper {
 
     fun toDto(evaluation: Evaluation): EvaluationDto {
         return EvaluationDto(
@@ -13,8 +13,7 @@ class EvaluationMapper {
             tutorEvaluation = evaluation.tutorEvaluation,
             studentEvaluation = evaluation.studentEvaluation,
             academicTutorEvaluation = evaluation.academicTutorEvaluation,
-            careerName = evaluation.careerName,
-            practiceId = evaluation.practice.id!!
+            careerName = evaluation.careerName
         )
     }
 
@@ -24,8 +23,7 @@ class EvaluationMapper {
             tutorEvaluation = dto.tutorEvaluation,
             studentEvaluation = dto.studentEvaluation,
             academicTutorEvaluation = dto.academicTutorEvaluation,
-            careerName = dto.careerName,
-            practice = Practice(dto.practiceId)
+            careerName = dto.careerName
         )
     }
 }

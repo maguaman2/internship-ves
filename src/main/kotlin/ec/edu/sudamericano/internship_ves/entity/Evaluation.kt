@@ -24,10 +24,5 @@ data class Evaluation(
     val academicTutorEvaluation: String,
 
     @Column(name = "career_name")
-    val careerName: String? = null,
-
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "practice_id", referencedColumnName = "id")
-    val practice: Practice
+    val careerName: String? = null
 )
