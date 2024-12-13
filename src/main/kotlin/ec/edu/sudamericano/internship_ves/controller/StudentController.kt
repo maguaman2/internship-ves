@@ -1,3 +1,4 @@
+package ec.edu.sudamericano.internship_ves.controller
 import org.springframework.web.bind.annotation.*
 import org.springframework.http.ResponseEntity
 import ec.edu.sudamericano.internship_ves.dto.StudentDto
