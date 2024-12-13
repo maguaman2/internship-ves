@@ -20,9 +20,9 @@ data class Company(
     @Column(name = "ceo", nullable = false)
     val ceo: String,
 
-    @Column(name = "latitude", precision = 10, scale = 7)
+    @Column(name = "latitude")
     val latitude: Double? = null,
 
-    @Column(name = "longitude", precision = 10, scale = 7)
+    @Column(name = "longitude")
     val longitude: Double? = null
 )
