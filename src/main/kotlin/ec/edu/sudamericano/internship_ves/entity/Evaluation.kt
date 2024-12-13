@@ -11,18 +11,16 @@ data class Evaluation(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
 
-    @NotNull
-    @Column(name = "tutor_evaluation")
-    val tutorEvaluation: String,
+    @Column(nullable = false)
+    val careerName: String? = null,
 
-    @NotNull
-    @Column(name = "student_evaluation")
-    val studentEvaluation: String,
+    @Column(nullable = false)
+    val category: String,
 
-    @NotNull
-    @Column(name = "academic_tutor_evaluation")
-    val academicTutorEvaluation: String,
+    @Column(nullable = false)
+    val grade: Double,
 
-    @Column(name = "career_name")
-    val careerName: String? = null
-)
+    @Column(nullable = false)
+    val practice_id: Int,
+
+    )
