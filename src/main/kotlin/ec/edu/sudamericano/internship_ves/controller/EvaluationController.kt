@@ -34,7 +34,7 @@ class EvaluationController {
 
     @PutMapping("/{id}")
     fun updateEvaluation(@PathVariable id: Long, @RequestBody evaluationDto: EvaluationDto): ResponseEntity<*> {
-        val response = evaluationService.updateEvaluation(id,EvaluationDto)
+        val response = evaluationService.updateEvaluation( id, evaluationDto)
         return ResponseEntity.ok(SuccessResponse(data = response))
     }
 

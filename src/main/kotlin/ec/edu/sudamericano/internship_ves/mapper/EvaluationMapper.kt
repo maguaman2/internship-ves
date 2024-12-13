@@ -5,7 +5,7 @@ import ec.edu.sudamericano.internship_ves.entity.Evaluation
 import org.springframework.stereotype.Component
 
 @Component
-class EvaluationMapper {
+object EvaluationMapper {
 
     fun toDto(evaluation: Evaluation): EvaluationDto {
         return EvaluationDto(

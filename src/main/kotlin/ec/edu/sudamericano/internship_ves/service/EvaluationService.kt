@@ -2,6 +2,7 @@ package ec.edu.sudamericano.internship_ves.service
 
 import ec.edu.sudamericano.internship_ves.dto.EvaluationDto
 import ec.edu.sudamericano.internship_ves.entity.Evaluation
+import ec.edu.sudamericano.internship_ves.mapper.EvaluationMapper
 import ec.edu.sudamericano.internship_ves.repository.EvaluationRepository
 import org.springframework.stereotype.Service
 import java.util.Optional
@@ -13,14 +14,14 @@ class EvaluationService(private val evaluationRepository: EvaluationRepository) 
 
     fun getEvaluationById(id: Long): Optional<Evaluation> = evaluationRepository.findById(id)
 
-    fun createEvaluation(evaluation: EvaluationDto): Evaluation = evaluationRepository.save(evaluation)
+    fun createEvaluation(id: Long, evaluationDto: EvaluationDto): Evaluation {
+        val evaluation = EvaluationMapper.toEntity(evaluationDto)
+        return evaluationRepository.save(evaluation)
+    }
 
-    fun updateEvaluation(id: Long, evaluation: Evaluation): Optional<Evaluation> {
-        return if (evaluationRepository.existsById(id)) {
-            Optional.of(evaluationRepository.save(evaluation.copy(id = id)))
-        } else {
-            Optional.empty()
-        }
+    fun updateEvaluation(id: Long, evaluationDto: EvaluationDto): Evaluation {
+        val evaluation = EvaluationMapper.toEntity(evaluationDto)
+            return evaluationRepository.save(evaluation)
     }
 
     fun deleteEvaluation(id: Long): Boolean {
