@@ -14,7 +14,7 @@ class EvaluationService(private val evaluationRepository: EvaluationRepository) 
 
     fun getEvaluationById(id: Long): Optional<Evaluation> = evaluationRepository.findById(id)
 
-    fun createEvaluation(id: Long, evaluationDto: EvaluationDto): Evaluation {
+    fun createEvaluation(evaluationDto: EvaluationDto): Evaluation {
         val evaluation = EvaluationMapper.toEntity(evaluationDto)
         return evaluationRepository.save(evaluation)
     }
