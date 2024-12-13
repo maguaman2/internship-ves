@@ -1,27 +1,29 @@
 package ec.edu.sudamericano.internship_ves.mapper
 
+import CompanyTutorDto
 import TutorDto
+import ec.edu.sudamericano.internship_ves.entity.CompanyTutor
 import org.springframework.stereotype.Component
 import ec.edu.sudamericano.internship_ves.entity.Tutor
 
 @Component
-class TutorMapper {
+class CompanyTutorMapper {
 
-    fun toDto(tutor: Tutor): TutorDto {
-        return TutorDto(
-            id = tutor.id,
-            name = tutor.name,
-            email = tutor.email,
-            expertise = tutor.expertise
+    fun toDto(companyTutor: CompanyTutor): CompanyTutorDto {
+        return CompanyTutorDto(
+            id = companyTutor.id,
+            name = companyTutor.name,
+            email = companyTutor.email,
+            expertise = companyTutor.expertise
         )
     }
 
-    fun toEntity(tutorDto: TutorDto): Tutor {
-        return Tutor(
-            id = tutorDto.id,
-            name = tutorDto.name,
-            email = tutorDto.email,
-            expertise = tutorDto.expertise
+    fun toEntity(companyTutorDto: CompanyTutorDto): CompanyTutor {
+        return CompanyTutor(
+            id = companyTutorDto.id,
+            name = companyTutorDto.name,
+            email = companyTutorDto.email,
+            expertise = companyTutorDto.expertise
         )
     }
 }

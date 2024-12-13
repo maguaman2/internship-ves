@@ -1,4 +1,4 @@
-data class TutorDto(
+data class CompanyTutorDto(
     val id: Long?,
     val name: String,
     val email: String,

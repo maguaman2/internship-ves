@@ -5,7 +5,7 @@ import ec.edu.sudamericano.internship_ves.service.CompanyTutorService
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api/company tutor/students")
+@RequestMapping("/api/company-tutor")
 class CompanyTutorController(private val service: CompanyTutorService) {
 
     @GetMapping
