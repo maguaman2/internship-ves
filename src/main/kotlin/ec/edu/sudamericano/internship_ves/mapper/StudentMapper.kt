@@ -3,7 +3,7 @@ package ec.edu.sudamericano.internship_ves.mapper
 import ec.edu.sudamericano.internship_ves.dto.StudentDto
 import ec.edu.sudamericano.internship_ves.entity.Student
 
-class StudentMapper {
+object StudentMapper {
     fun toDto(student: Student): StudentDto {
         return StudentDto().apply {
             id = student.id
