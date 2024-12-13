@@ -9,40 +9,38 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/evaluations")
-class EvaluationController() {
+class EvaluationController {
+
     @Autowired
     lateinit var evaluationService: EvaluationService
 
     @GetMapping
     fun getAllEvaluations(): ResponseEntity<*> {
         val response = evaluationService.getAllEvaluations()
-        return ResponseEntity.ok(SuccessResponse(data=response))
+        return ResponseEntity.ok(SuccessResponse(data = response))
     }
 
     @GetMapping("/{id}")
     fun getEvaluationById(@PathVariable id: Long): ResponseEntity<*> {
         val response = evaluationService.getEvaluationById(id)
-        return ResponseEntity.ok(SuccessResponse(data=response))
+        return ResponseEntity.ok(SuccessResponse(data = response))
     }
 
     @PostMapping
     fun createEvaluation(@RequestBody evaluationDto: EvaluationDto): ResponseEntity<*> {
         val response = evaluationService.createEvaluation(evaluationDto)
-        return ResponseEntity.ok(SuccessResponse(data=response))
+        return ResponseEntity.ok(SuccessResponse(data = response))
     }
 
     @PutMapping("/{id}")
     fun updateEvaluation(@PathVariable id: Long, @RequestBody evaluationDto: EvaluationDto): ResponseEntity<*> {
-        val response = evaluationService.updateEvaluation(
-            id,
-            evaluation = TODO()
-        )
-        return ResponseEntity.ok(SuccessResponse(data=response))
+        val response = evaluationService.updateEvaluation(id,EvaluationDto)
+        return ResponseEntity.ok(SuccessResponse(data = response))
     }
 
     @DeleteMapping("/{id}")
     fun deleteEvaluation(@PathVariable id: Long): ResponseEntity<*> {
         val response = evaluationService.deleteEvaluation(id)
-        return ResponseEntity.ok(SuccessResponse(data=response))
+        return ResponseEntity.ok(SuccessResponse(data = response))
     }
 }
