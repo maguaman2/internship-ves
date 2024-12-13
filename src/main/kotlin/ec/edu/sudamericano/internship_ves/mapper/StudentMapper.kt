@@ -8,8 +8,8 @@ object StudentMapper {
         return StudentDto().apply {
             id = student.id
             firstName = student.firstName
-            lastName = student.lastName
             nui = student.nui
+            lastName = student.lastName
             photoUrl = student.photoUrl
             email = student.email
             careerId = student.careerId
@@ -19,8 +19,8 @@ object StudentMapper {
         return Student(
             id = studentDto.id ?: 0,
             firstName = studentDto.firstName ?: "",
-            lastName = studentDto.lastName ?: "",
             nui = studentDto.nui ?: "",
+            lastName = studentDto.lastName ?: "",
             photoUrl = studentDto.photoUrl,
             email = studentDto.email ?: "",
             careerId = studentDto.careerId ?: 0

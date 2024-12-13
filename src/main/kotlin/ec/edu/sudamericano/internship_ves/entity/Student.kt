@@ -8,7 +8,7 @@ import jakarta.persistence.Id
 import jakarta.persistence.Table
 
 @Entity
-@Table(name="tbl_student")
+@Table(name="student")
 class Student (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,11 +17,11 @@ class Student (
     @Column(nullable = false)
     val firstName: String,
 
-    @Column(nullable = false)
-    val lastName: String,
-
     @Column(nullable = false, unique = true)
     val nui: String,
+
+    @Column(nullable = false)
+    val lastName: String,
 
     @Column(nullable = true)
     val photoUrl: String? = null,
