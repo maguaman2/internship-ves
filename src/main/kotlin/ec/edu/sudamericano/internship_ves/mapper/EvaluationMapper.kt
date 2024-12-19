@@ -10,20 +10,20 @@ object EvaluationMapper {
     fun toDto(evaluation: Evaluation): EvaluationDto {
         return EvaluationDto(
             id = evaluation.id,
-            tutorEvaluation = evaluation.tutorEvaluation,
-            studentEvaluation = evaluation.studentEvaluation,
-            academicTutorEvaluation = evaluation.academicTutorEvaluation,
-            careerName = evaluation.careerName
+            careerName = evaluation.careerName,
+            category = evaluation.category,
+            grade = evaluation.grade,
+            practiceId = evaluation.practice_id
         )
     }
 
     fun toEntity(dto: EvaluationDto): Evaluation {
         return Evaluation(
             id = dto.id,
-            tutorEvaluation = dto.tutorEvaluation,
-            studentEvaluation = dto.studentEvaluation,
-            academicTutorEvaluation = dto.academicTutorEvaluation,
-            careerName = dto.careerName
+            careerName = dto.careerName,
+            category = dto.category,
+            grade = dto.grade,
+            practice_id = dto.practiceId
         )
     }
 }
