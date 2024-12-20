@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/practice-activities")
+@RequestMapping("/practice-activities")
 class PracticeActivityViewController(
     private val service: PracticeActivityViewService
 ) {
