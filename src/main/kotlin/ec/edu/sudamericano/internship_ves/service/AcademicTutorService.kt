@@ -46,5 +46,4 @@ class AcademicTutorService (
         academicTutorRepository.deleteById(id)
         return true
     }
-
 }
