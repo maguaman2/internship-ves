@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/v2/tutors")
+@RequestMapping("/api/v2/tutor")
 class AcademicTutorViewController (private val service: AcademicTutorViewService) {
     @GetMapping
     fun getAllTutors() : List<AcademicTutorViewDto> {
