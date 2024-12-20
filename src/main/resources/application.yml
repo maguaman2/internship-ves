@@ -15,8 +15,8 @@ spring:
     sqlMigrationPrefix: V
     schemas: public
 
-  datasource:
-    url: jdbc:postgresql://${DB_SERVER}:${DB_PORT}/${DB_NAME}?socketTimeout=3
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
-    driverClassName: org.postgresql.Driver
+    datasource:
+      url: jdbc:postgresql://stampy.db.elephantsql.com:5432/mklncdto?socketTimeout=3
+      username: mklncdto
+      password: OdsZx-Z6g9glEOBtq4BJI8b7Z7OOvsXw
+      driverClassName: org.postgresql.Driver

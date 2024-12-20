@@ -1,4 +1,4 @@
-package ec.edu.sudamericano.internship_ves.service
+/*package ec.edu.sudamericano.internship_ves.service
 
 import ec.edu.sudamericano.internship_ves.entity.CompanyTutor
 import ec.edu.sudamericano.internship_ves.repository.CompanyTutorRepository
@@ -11,3 +11,4 @@ class CompanyTutorService(private val repository: CompanyTutorRepository) {
 
     fun saveStudent(student: CompanyTutor): CompanyTutor = repository.save(student)
 }
+*/

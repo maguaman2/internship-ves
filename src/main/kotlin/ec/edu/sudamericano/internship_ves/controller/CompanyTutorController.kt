@@ -1,4 +1,4 @@
-package ec.edu.sudamericano.internship_ves.controller
+/*package ec.edu.sudamericano.internship_ves.controller
 
 import ec.edu.sudamericano.internship_ves.entity.CompanyTutor
 import ec.edu.sudamericano.internship_ves.service.CompanyTutorService
@@ -14,3 +14,4 @@ class CompanyTutorController(private val service: CompanyTutorService) {
     @PostMapping
     fun saveStudent(@RequestBody student: CompanyTutor): CompanyTutor = service.saveStudent(student)
 }
+*/

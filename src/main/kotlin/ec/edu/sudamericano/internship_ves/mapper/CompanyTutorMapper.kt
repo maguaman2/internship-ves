@@ -1,10 +1,9 @@
+/*
 package ec.edu.sudamericano.internship_ves.mapper
 
-import CompanyTutorDto
-import TutorDto
+import ec.edu.sudamericano.internship_ves.dto.CompanyTutorDto
 import ec.edu.sudamericano.internship_ves.entity.CompanyTutor
 import org.springframework.stereotype.Component
-import ec.edu.sudamericano.internship_ves.entity.Tutor
 
 @Component
 class CompanyTutorMapper {
@@ -26,4 +25,4 @@ class CompanyTutorMapper {
             expertise = companyTutorDto.expertise
         )
     }
-}
+}*/
