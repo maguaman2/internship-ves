@@ -7,7 +7,7 @@ import java.time.LocalDate
 @Entity
 @Table(name = "practice")
 class Practice() {
-    // Getters y Setters
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
