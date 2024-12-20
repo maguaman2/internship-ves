@@ -16,7 +16,7 @@ spring:
     schemas: public
 
   datasource:
-    url: jdbc:postgresql://${DB_SERVER}:${DB_PORT}/${DB_NAME}?socketTimeout=3
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
-    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://castor.db.elephantsql.com:5432/zzhmsuxd?socketTimeout=3
+    username: zzhmsuxd
+    password: HBtC9MOk9KrzWfhHCeiciCtHxPJGKjur
+    driver-class-name: org.postgresql.Driver
