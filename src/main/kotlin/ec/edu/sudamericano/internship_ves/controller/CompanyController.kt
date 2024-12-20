@@ -1,3 +1,5 @@
+package ec.edu.sudamericano.internship_ves.controller
+
 import ec.edu.sudamericano.internship_ves.dto.CompanyDto
 import ec.edu.sudamericano.internship_ves.response.SuccessResponse
 import ec.edu.sudamericano.internship_ves.service.CompanyService
